@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Column from './component/Column'
 //import ListTemplate from './component/List'
-import ListForm from './component/ListForm';
+import RepoListForm from './component/RepoListForm';
+import RepoInfoList from "./component/RepoInfoList";
 
 class App extends Component {
   constructor () {
@@ -9,14 +10,16 @@ class App extends Component {
     this.state = {
         information: [
             {
-                id: 0,
-                name: '김민준',
-                phone: '010-0000-0000'
+                name: 'Repo1',
+                url: 'https://github.com/Repo1_user.git',
+                latest_commit: '2019-11-12',
+                latest_scan: '2019-11-14'
             },
             {
-                id: 1,
-                name: '홍길동',
-                phone: '010-0000-0001'
+                name: 'Repo2',
+                url: 'https://github.com/Repo2_user.git',
+                latest_commit: '2019-11-13',
+                latest_scan: '2019-11-15'
             }
         ],
         selectedChart: 'column'
@@ -36,17 +39,34 @@ class App extends Component {
     })
   }
 
+
   render () {
-    return (
-      <div className="app">
-          <ListForm>
-              onCreate={this.handleCreate}
-          </ListForm>
-          <br/>
-          <br/>
-          <Column></Column>
-      </div>
-    )
+      const { information } =  this.state;
+      return (
+          <div className="app">
+              <ul class="tabs">
+                  <li class="tab-link" data-tab="tab-1">GitHub</li>
+                  <li class="tab-link" data-tab="tab-2">GitLab</li>
+              </ul>
+              <div id="tab-1" className="tab-content current">
+                  <RepoListForm>
+                      onCreate={this.handleCreate}
+                  </RepoListForm>
+                  <RepoInfoList data={this.state.information}/>
+                  <br/>
+                  <br/>
+              </div>
+              <div id="tab-2" className="tab-content">
+                  <RepoListForm>
+                      onCreate={this.handleCreate}
+                  </RepoListForm>
+                  <RepoInfoList data={this.state.information}/>
+                  <br/>
+                  <br/>
+              </div>
+              <Column></Column>
+          </div>
+      )
   }
 }
 
