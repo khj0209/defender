@@ -38,13 +38,11 @@ button {
   background: #F3F3F3;
   border: 1px solid #ddd;
   border-radius: 4px;
-  height: 40px;
-  width: 120px;
+  height: 30px;
+  width: 100px;
   color: #333;
   font-size: 14px;
   cursor: pointer;
-  position: relative;
   display: inline-block;
-  left: 90px;
-  top: -7px;
+  left: 150px;
 }

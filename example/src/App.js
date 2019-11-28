@@ -63,6 +63,14 @@ class App extends Component {
                       <br/>
                       <br/>
                   </div>
+                  <div label="BitBucket">
+                      <RepoListForm>
+                      onCreate={this.handleCreate}
+                      </RepoListForm>
+                      <RepoInfoList data={this.state.information}/>
+                      <br/>
+                      <br/>
+                  </div>
               </Tabs>
               <Column></Column>
           </div>

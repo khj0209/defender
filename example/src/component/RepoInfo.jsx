@@ -23,10 +23,11 @@ class RepoInfo extends Component{
 
     return (
       <div style={style}>
-        <div><b>{name}</b></div>
-        <div><b>{url}</b></div>
-        <div><b>{latest_commit}</b></div>
-        <div>{latest_scan}</div>
+          <div><b>{name} | {url} | {latest_commit} | {latest_scan}</b>
+              <button>Scan</button>
+              <button>Report</button>
+          </div>
+
       </div>
     );
   }
