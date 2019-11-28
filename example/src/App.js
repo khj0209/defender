@@ -3,6 +3,7 @@ import Column from './component/Column'
 //import ListTemplate from './component/List'
 import RepoListForm from './component/RepoListForm';
 import RepoInfoList from "./component/RepoInfoList";
+import Tabs from "./component/tabs"
 
 class App extends Component {
   constructor () {
@@ -22,6 +23,7 @@ class App extends Component {
                 latest_scan: '2019-11-15'
             }
         ],
+
         selectedChart: 'column'
     }
     this.changeChart = this.changeChart.bind(this)
@@ -44,26 +46,24 @@ class App extends Component {
       const { information } =  this.state;
       return (
           <div className="app">
-              <ul class="tabs">
-                  <li class="tab-link" data-tab="tab-1">GitHub</li>
-                  <li class="tab-link" data-tab="tab-2">GitLab</li>
-              </ul>
-              <div id="tab-1" className="tab-content current">
-                  <RepoListForm>
+              <Tabs>
+                  <div label="GitHub">
+                      <RepoListForm>
                       onCreate={this.handleCreate}
-                  </RepoListForm>
-                  <RepoInfoList data={this.state.information}/>
-                  <br/>
-                  <br/>
-              </div>
-              <div id="tab-2" className="tab-content">
-                  <RepoListForm>
+                      </RepoListForm>
+                      <RepoInfoList data={this.state.information}/>
+                      <br/>
+                      <br/>
+                  </div>
+                  <div label="GitLab">
+                      <RepoListForm>
                       onCreate={this.handleCreate}
-                  </RepoListForm>
-                  <RepoInfoList data={this.state.information}/>
-                  <br/>
-                  <br/>
-              </div>
+                      </RepoListForm>
+                      <RepoInfoList data={this.state.information}/>
+                      <br/>
+                      <br/>
+                  </div>
+              </Tabs>
               <Column></Column>
           </div>
       )
